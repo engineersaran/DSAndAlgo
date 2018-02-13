@@ -1,4 +1,4 @@
-package com.sorting.java;
+package com.sorting.java.insertionsort;
 
 import java.util.ArrayList;
 import java.util.List;
