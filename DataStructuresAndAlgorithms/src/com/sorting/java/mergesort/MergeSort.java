@@ -1,4 +1,4 @@
-package com.sorting.java.insertionsort;
+package com.sorting.java.mergesort;
 
 public class MergeSort {
 	
