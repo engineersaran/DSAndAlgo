@@ -24,6 +24,11 @@ public class TestGraph {
 		System.out.println("Visits: ");
 		graph.depthFirstSearch();
 		System.out.println();
+		
+		System.out.println("Visits: ");
+		graph.breadthFirstSearch();
+		System.out.println();
+
 
 	}
 

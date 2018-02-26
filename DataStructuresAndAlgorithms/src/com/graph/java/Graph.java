@@ -9,6 +9,7 @@ public class Graph {
 	private int[][] adjacencyMatrix;
 	private int vertexCount = 0;
 	private Stack stack;
+	private Queue queue;
 
 	public Graph(int maxVertices) {
 
@@ -16,6 +17,7 @@ public class Graph {
 		vertexList = new Vertex[maximumVertices];
 		adjacencyMatrix = new int[maximumVertices][maximumVertices];
 		stack = new Stack(maximumVertices);
+		queue = new Queue(maximumVertices);
 		initializeAdjacencyMatrix();
 	}
 
@@ -34,7 +36,7 @@ public class Graph {
 			vertexList[vertexCount++] = new Vertex(vertexLabel);
 		} else {
 			System.out.println("Graph reaches its maximum capacity to add Vertex : " + vertexLabel);
-			System.exit(0);
+			System.exit(-1);
 		}
 	}
 
@@ -103,7 +105,27 @@ public class Graph {
 			}
 
 		}
+		resetVertices();
+	}
 
+	public void breadthFirstSearch() {
+
+		vertexList[0].wasVisited = true;
+		displayVertex(0);
+		queue.insert(vertexList[0].vertexLabel);
+
+		while (!queue.isEmpty()) {
+
+			int unVisitedVertex = 0;
+			String visitedVertex = queue.remove();
+			while ((unVisitedVertex = getAdjUnvisitedVertex(visitedVertex)) != -1) {
+
+				vertexList[unVisitedVertex].wasVisited = true;
+				displayVertex(unVisitedVertex);
+				queue.insert(vertexList[unVisitedVertex].vertexLabel);
+
+			}
+		}
 		resetVertices();
 	}
 
